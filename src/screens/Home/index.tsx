@@ -1,7 +1,14 @@
+import Header from "@components/Header";
+import MainContainer from "@components/Layout/MainContainer";
 import styled from "styled-components";
 
 const Home: React.FC = () => {
-  return <Container>{"Home Screen"}</Container>;
+  return (
+    <MainContainer>
+      <Header />
+      <Container>{"Home Screen"}</Container>
+    </MainContainer>
+  );
 };
 
 const Container = styled.div`

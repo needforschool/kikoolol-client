@@ -11,21 +11,19 @@
     "docker:run": "docker run -p 3000:3000 next-boilerplate"
   },
   "dependencies": {
-    "next": "^12.0.8",
-    "next-seo": "^5.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "next": "^13.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "remixicon": "^2.5.0",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/node": "15.0.0",
-    "@types/react": "17.0.4",
-    "@types/react-dom": "17.0.3",
-    "@types/styled-components": "5.1.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
-    "babel-plugin-styled-components": "^1.12.0",
     "eslint": "^7.28.0",
     "eslint-config-next": "^11.0.0",
     "eslint-config-prettier": "^8.3.0",

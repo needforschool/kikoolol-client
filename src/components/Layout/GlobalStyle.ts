@@ -143,11 +143,15 @@ export default createGlobalStyle`
     body {
         font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Fira Sans", Avenir, "Helvetica Neue",
             "Lucida Grande", sans-serif;
-        background-color: ${({ theme }) => theme.colors.layout.darkest};
+        background-color: #0D1719;
+        background-image: url("/static/images/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 
     option {
-        background-color: ${({ theme }) => theme.colors.layout.darkest};
+        background-color: #0D1719;
     }
 
     /* scrollbar */
@@ -185,17 +189,17 @@ export default createGlobalStyle`
     textarea,
     select,
     option {
-        font-family: ${({ theme }) => theme.family.primary};
-        font-size: ${({ theme }) => theme.size.normal};
-        font-weight: ${({ theme }) => theme.weight.regular};
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
         text-align: left;
-        color: ${({ theme }) => theme.colors.text.lightest};
+        color: #fff;
         line-height: 1.25;
     }
 
     a {
         text-decoration: none;
-        color: ${({ theme }) => theme.colors.text.lightest};
+        color: #fff;
         transition: all 0.2s;
         cursor: pointer;
 
