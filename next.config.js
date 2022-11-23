@@ -1,10 +1,5 @@
 /* eslint-disable no-undef */
 
-const i18n = {
-  locales: ["en", "fr"],
-  defaultLocale: "en",
-};
-
 const compiler = {
   styledComponents: true,
 };
@@ -48,7 +43,6 @@ const headers = async () => {
 
 module.exports = {
   poweredByHeader: false,
-  i18n,
   compiler,
   headers,
 };
