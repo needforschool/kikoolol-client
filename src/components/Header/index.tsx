@@ -19,6 +19,10 @@ const Container = styled.header`
   align-items: center;
   justify-content: center;
   height: 200px;
+
+  @media (max-width: 768px) {
+    height: 100px;
+  }
 `;
 
 export default Header;
