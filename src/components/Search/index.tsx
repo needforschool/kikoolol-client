@@ -2,7 +2,17 @@ import styled from "styled-components";
 import PlayerPicker from "./PlayerPicker";
 import RegionPicker from "./RegionPicker";
 
-const Search: React.FC = () => {
+interface Props {
+  region: string;
+  setSearchRegion: (region: string) => void;
+  suggestions: string[];
+}
+
+const Search: React.FC<Props> = ({
+  region,
+  setSearchRegion,
+  suggestions,
+}: Props) => {
   return (
     <Container>
       <RegionPicker />

@@ -1,3 +1,4 @@
+import API_REGIONS from "@constants/api";
 import styled from "styled-components";
 
 const RegionPicker: React.FC = () => {
@@ -8,18 +9,11 @@ const RegionPicker: React.FC = () => {
         Europe West <i className="ri-arrow-down-s-line" />
       </Current>
       <InvisibleSelect>
-        <option>North America</option>
-        <option>Europe West</option>
-        <option>Europe de l’Ouest</option>
-        <option>Europe Nordic & East</option>
-        <option>Oceania</option>
-        <option>Korea</option>
-        <option>Japan</option>
-        <option>Brazil</option>
-        <option>LAS</option>
-        <option>LAN</option>
-        <option>Russia</option>
-        <option>Turkey</option>
+        {Object.values(API_REGIONS).map((region) => (
+          <option key={region.platform} value={region.platform}>
+            {region.name}
+          </option>
+        ))}
       </InvisibleSelect>
     </Container>
   );
