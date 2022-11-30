@@ -1,20 +1,77 @@
+import React from "react";
 import styled from "styled-components";
 
-const PlayerPicker: React.FC = () => {
+interface Props {
+  search: string;
+  setSearch: (search: string) => void;
+  suggestions: string[];
+}
+
+const PlayerPicker: React.FC<Props> = ({
+  search,
+  setSearch,
+  suggestions,
+}: Props) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = event.target.value;
+    setSearch(searchTerm);
+  };
+
+  const highlightMatchingKeywords = (text: string) => {
+    const regex = new RegExp(search, "gi");
+    const matches = text.match(regex);
+
+    if (matches) {
+      const match = matches[0];
+      const index = text.indexOf(match);
+
+      return (
+        <p style={{ display: "flex" }}>
+          {text.substring(0, index)}
+          <Highlight>{match}</Highlight>
+          {text.substring(index + match.length)}
+        </p>
+      );
+    }
+
+    return text;
+  };
+  const memoizedHighlightMatchingKeywords = React.useMemo(
+    () => highlightMatchingKeywords,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [suggestions]
+  );
+
   return (
     <Container>
-      <Field placeholder="Nom du joueur" />
-      <Icon className="ri-search-line" />
+      <FieldContainer bottomBorder={suggestions.length < 1}>
+        <Field placeholder="Nom du joueur" onChange={handleChange} />
+        <Icon className="ri-search-line" />
+      </FieldContainer>
+      {suggestions.length > 0 && (
+        <Suggestions>
+          {suggestions.slice(0, 5).map((suggestion) => (
+            <Suggestion key={suggestion}>
+              {memoizedHighlightMatchingKeywords(suggestion)}
+            </Suggestion>
+          ))}
+        </Suggestions>
+      )}
     </Container>
   );
 };
 
 const Container = styled.div`
-  display: flex;
+  position: relative;
   flex: 1;
+`;
+
+const FieldContainer = styled.div<{ bottomBorder?: boolean }>`
+  display: flex;
   background: #1a282b;
   border: 2px solid #212f32;
-  border-radius: 10px;
+  ${({ bottomBorder }) =>
+    bottomBorder ? "border-radius: 10px;" : "border-radius: 10px 10px 0 0;"}
   padding: 10px 12px;
   align-items: center;
   position: relative;
@@ -39,6 +96,38 @@ const Field = styled.input`
   font-weight: 400;
   color: #fff;
   padding-left: 40px;
+`;
+
+const Suggestions = styled.div`
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 0 0 10px 10px;
+  background-color: #212f32;
+`;
+
+const Suggestion = styled.div`
+  padding: 10px 12px;
+  width: 100%;
+  text-align: left;
+  border-radius: none;
+  background-color: #212f32;
+  cursor: pointer;
+
+  :hover {
+    background-color: #1a282b;
+  }
+
+  :last-child {
+    border-radius: 0 0 10px 10px;
+  }
+`;
+
+const Highlight = styled.div`
+  color: #0076cc;
 `;
 
 export default PlayerPicker;

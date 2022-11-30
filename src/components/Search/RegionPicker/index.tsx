@@ -1,57 +1,42 @@
+import Select, { ActionType, SelectOption } from "@components/Select";
 import API_REGIONS from "@constants/api";
 import styled from "styled-components";
 
-const RegionPicker: React.FC = () => {
+interface Props {
+  region: string;
+  setRegion: (region: string) => void;
+}
+
+const RegionPicker: React.FC<Props> = ({ region, setRegion }: Props) => {
   return (
     <Container>
-      <Title>Région</Title>
-      <Current>
-        Europe West <i className="ri-arrow-down-s-line" />
-      </Current>
-      <InvisibleSelect>
-        {Object.values(API_REGIONS).map((region) => (
-          <option key={region.platform} value={region.platform}>
-            {region.name}
-          </option>
-        ))}
-      </InvisibleSelect>
+      <RegionSelect
+        title={"Région"}
+        required={true}
+        removeFromMenuOnSelect={false}
+        closeMenuOnSelect={true}
+        clearable={false}
+        defaultValue={region}
+        onChange={(option: SelectOption | undefined, action: ActionType) => {
+          if (action === "select" && option) setRegion(option.value);
+        }}
+        options={Object.values(API_REGIONS).map((region) => ({
+          value: region.platform,
+          label: region.name,
+        }))}
+      />
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
   flex-direction: column;
-  background: #1a282b;
-  border: 2px solid #212f32;
-  border-radius: 10px;
-  padding: 10px 12px;
-  position: relative;
 `;
 
-const Title = styled.span`
-  font-size: 12px;
-`;
-
-const Current = styled.span`
-  font-weight: 400;
-  font-size: 15px;
-
-  i {
-    vertical-align: middle;
-  }
-`;
-
-const InvisibleSelect = styled.select`
-  position: absolute;
-  opacity: 0;
+const RegionSelect = styled(Select)`
   outline: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  min-width: 150px;
 `;
 
 export default RegionPicker;
