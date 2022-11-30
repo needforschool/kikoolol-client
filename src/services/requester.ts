@@ -18,7 +18,7 @@ const requester = <T>(): Props<T> => {
       success: data.success,
       data: data.data,
       message: data.message,
-      code: data.code,
+      status: data.status,
       errors: data.errors,
     };
   };
@@ -30,7 +30,7 @@ const requester = <T>(): Props<T> => {
       success: data.success,
       data: data.data,
       message: data.message,
-      code: data.code,
+      status: data.status,
       errors: data.errors,
     };
   };

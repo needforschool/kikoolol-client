@@ -2,6 +2,6 @@ export type Response<T> = {
   success: boolean;
   data: T;
   message?: string;
-  code?: number;
+  status?: number;
   errors?: string[];
 };
