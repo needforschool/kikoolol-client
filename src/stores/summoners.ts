@@ -10,3 +10,12 @@ export const searchSummoner = async (
     `/summoners/search/${region}/${summonerName}`
   );
 };
+
+export const getSummoner = async (
+  summonerName: string,
+  region: string
+): Promise<Response<Summoner>> => {
+  return await requester<Summoner>().get(
+    `/summoners/${region}/${summonerName}`
+  );
+};

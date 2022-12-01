@@ -21,7 +21,6 @@ const Container = styled.div`
   border: 2px solid #212f32;
   border-radius: 10px;
   width: 100%;
-  margin-top: 30px;
   padding: 50px 40px;
   position: relative;
   background: #1a282b url("/static/images/info.png");

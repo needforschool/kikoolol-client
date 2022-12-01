@@ -22,7 +22,7 @@ const Search: React.FC = () => {
   const fetchSearchSuggestions = async (searchTerm: string) => {
     const response = await searchSummoner(searchTerm, region);
 
-    if (response.success) {
+    if (response.success && response.data) {
       setSuggestions(
         response.data.map((summoner: Summoner) => summoner.summonerName)
       );
@@ -74,9 +74,10 @@ const Container = styled.div`
   display: flex;
   gap: 10px;
   width: 100%;
+  margin-bottom: 50px;
 
   @media (max-width: 768px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 `;
 
