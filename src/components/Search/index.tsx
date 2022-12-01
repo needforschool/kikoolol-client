@@ -30,11 +30,13 @@ const Search: React.FC = () => {
   };
 
   React.useEffect(() => {
+    if (search.length > 0) {
+      setSuggestions([]);
+    }
+
     const timeoutId = setTimeout(() => {
       if (search.length > 0) {
         fetchSearchSuggestions(search);
-      } else {
-        setSuggestions([]);
       }
     }, 0.5 * 1000);
 
@@ -45,6 +47,8 @@ const Search: React.FC = () => {
   }, [search]);
 
   const handleSearch = (summoner: string = search) => {
+    setSuggestions([]);
+
     if (summoner && summoner.length > 0) {
       router.push(`/summoner/${region}/${summoner}`);
     }
@@ -62,7 +66,7 @@ const Search: React.FC = () => {
         handleSearch={handleSearch}
       />
       {canSearch && (
-        <SearchButton onClick={handleSearch}>
+        <SearchButton onClick={() => handleSearch(search)}>
           {"Lancer la recherche"}
         </SearchButton>
       )}

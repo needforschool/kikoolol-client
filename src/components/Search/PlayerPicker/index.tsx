@@ -27,8 +27,6 @@ const PlayerPicker: React.FC<Props> = ({
       const match = matches[0];
       const index = text.indexOf(match);
 
-      text = text.replace(" ", "&nbsp;");
-
       return (
         <p style={{ display: "flex" }}>
           {text.substring(0, index)}
