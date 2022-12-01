@@ -5,7 +5,7 @@ import Leaderboard from "@components/Leaderboard";
 import styled from "styled-components";
 import Page from "@components/Page";
 
-const Home: React.FC = () => {
+const HomeScreen: React.FC = () => {
   return (
     <Page withSearch>
       <Info />
@@ -33,4 +33,4 @@ const LeaderboardContainer = styled.div`
   }
 `;
 
-export default Home;
+export default HomeScreen;

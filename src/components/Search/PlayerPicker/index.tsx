@@ -136,7 +136,7 @@ const Suggestion = styled.div`
   }
 `;
 
-const Highlight = styled.div`
+const Highlight = styled.span`
   color: #0076cc;
 `;
 
