@@ -1,39 +1,25 @@
 import React from "react";
 
-import Header from "@components/Header";
 import Info from "@components/Info";
-import MainContainer from "@components/Layout/MainContainer";
 import Leaderboard from "@components/Leaderboard";
-import Search from "@components/Search";
 import styled from "styled-components";
+import Page from "@components/Page";
 
 const Home: React.FC = () => {
   return (
-    <MainContainer>
-      <Header />
-      <Container>
-        <Search />
-        <Info />
-        <LeaderboardContainer>
-          <Leaderboard />
-          <Leaderboard />
-          <Leaderboard />
-          <Leaderboard />
-          <Leaderboard />
-          <Leaderboard />
-        </LeaderboardContainer>
-      </Container>
-    </MainContainer>
+    <Page withSearch>
+      <Info />
+      <LeaderboardContainer>
+        <Leaderboard />
+        <Leaderboard />
+        <Leaderboard />
+        <Leaderboard />
+        <Leaderboard />
+        <Leaderboard />
+      </LeaderboardContainer>
+    </Page>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-`;
 
 const LeaderboardContainer = styled.div`
   display: flex;

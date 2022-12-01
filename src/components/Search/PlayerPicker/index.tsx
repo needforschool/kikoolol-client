@@ -5,12 +5,14 @@ interface Props {
   search: string;
   setSearch: (search: string) => void;
   suggestions: string[];
+  handleSearch: (summoner?: string) => void;
 }
 
 const PlayerPicker: React.FC<Props> = ({
   search,
   setSearch,
   suggestions,
+  handleSearch,
 }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value;
@@ -25,6 +27,8 @@ const PlayerPicker: React.FC<Props> = ({
       const match = matches[0];
       const index = text.indexOf(match);
 
+      text = text.replace(" ", "&nbsp;");
+
       return (
         <p style={{ display: "flex" }}>
           {text.substring(0, index)}
@@ -36,6 +40,7 @@ const PlayerPicker: React.FC<Props> = ({
 
     return text;
   };
+
   const memoizedHighlightMatchingKeywords = React.useMemo(
     () => highlightMatchingKeywords,
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,8 +55,11 @@ const PlayerPicker: React.FC<Props> = ({
       </FieldContainer>
       {suggestions.length > 0 && (
         <Suggestions>
-          {suggestions.slice(0, 5).map((suggestion) => (
-            <Suggestion key={suggestion}>
+          {suggestions.map((suggestion) => (
+            <Suggestion
+              key={suggestion}
+              onClick={() => handleSearch(suggestion)}
+            >
               {memoizedHighlightMatchingKeywords(suggestion)}
             </Suggestion>
           ))}
@@ -102,6 +110,8 @@ const Suggestions = styled.div`
   position: absolute;
   z-index: 1;
   width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
