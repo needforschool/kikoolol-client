@@ -6,14 +6,14 @@ import { Response } from "@typeDefs/response";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 type Props<T> = {
-  get: (url: string) => Promise<Response<T>>;
+  get: (url: string, params?: unknown) => Promise<Response<T>>;
   post: (url: string, body: any) => Promise<Response<T>>;
 };
 
 const requester = <T>(): Props<T> => {
-  const get = async (url: string) => {
+  const get = async (url: string, params?: unknown) => {
     try {
-      const { data } = await axios.get(`${API_URL}${url}`);
+      const { data } = await axios.get(`${API_URL}${url}`, { params });
 
       return {
         success: data.success,
