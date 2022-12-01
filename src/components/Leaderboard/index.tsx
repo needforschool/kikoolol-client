@@ -5,20 +5,22 @@ const Leaderboard: React.FC = () => {
     <Container>
       <Title>Champions les plus choisis</Title>
       <Table>
-        <tr>
-          <td>01</td>
-          <td>
-            <Thumbnail
-              alt="Aatrox"
-              src="https://picsum.photos/25/60"
-              height={25}
-              width={25}
-              draggable={false}
-            />
-          </td>
-          <td>Fiora</td>
-          <td>50%</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>
+              <Thumbnail
+                alt="Aatrox"
+                src="https://picsum.photos/25/60"
+                height={25}
+                width={25}
+                draggable={false}
+              />
+            </td>
+            <td>Fiora</td>
+            <td>50%</td>
+          </tr>
+        </tbody>
       </Table>
     </Container>
   );
