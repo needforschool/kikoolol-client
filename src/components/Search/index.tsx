@@ -59,17 +59,24 @@ const Search: React.FC = () => {
   return (
     <Container>
       <RegionPicker region={region} setRegion={setRegion} />
-      <PlayerPicker
-        search={search}
-        setSearch={setSearch}
-        suggestions={suggestions}
-        handleSearch={handleSearch}
-      />
-      {canSearch && (
-        <SearchButton onClick={() => handleSearch(search)}>
-          {"Lancer la recherche"}
-        </SearchButton>
-      )}
+      <SearchContainer>
+        <PlayerPicker
+          search={search}
+          setSearch={setSearch}
+          suggestions={suggestions}
+          handleSearch={handleSearch}
+        />
+        {canSearch && (
+          <>
+            <SearchButton onClick={() => handleSearch(search)}>
+              {"Lancer la recherche"}
+            </SearchButton>
+            <SearchButtonMobile onClick={() => handleSearch(search)}>
+              <i className="ri-search-line" />
+            </SearchButtonMobile>
+          </>
+        )}
+      </SearchContainer>
     </Container>
   );
 };
@@ -85,6 +92,28 @@ const Container = styled.div`
   }
 `;
 
-const SearchButton = styled(Button)``;
+const SearchContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  flex: 1;
+`;
+
+const SearchButton = styled(Button)`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const SearchButtonMobile = styled(Button)`
+  display: none;
+  height: 50px;
+  width: 50px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 export default Search;

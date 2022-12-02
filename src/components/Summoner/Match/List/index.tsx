@@ -46,6 +46,11 @@ const MatchItem = styled.li`
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 10px;
+
+  :first-child {
+    margin-top: 0;
+  }
 `;
 
 export default SummonerMatchList;

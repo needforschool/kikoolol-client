@@ -36,7 +36,8 @@ const SummonerScreen: NextPage = () => {
     const fetchSummonerMatchs = async () => {
       const response = await getMatchs(
         summonerName as string,
-        region as string
+        region as string,
+        5
       );
 
       if (response.success && response.data) {
